@@ -1,0 +1,27 @@
+<p>
+  <!-- Вывод хэш @row с ключем content (вывод поста) -->
+  <%= @row['content'] %>
+  <br>
+
+  <!-- Вывод хэш @row с ключем created_date (вывод даты)-->
+  Added at: <%= @row['created_date'] %>
+</p>
+
+<br>
+<h4>Comments:</h4>
+<!-- Вывод коментарий из таблицы comments с ключем content-->
+<% @comments.each do |commentary| %>
+  <p>
+    <%= commentary['content'] %>
+    <br>
+    <span class="small">Added at: <%= commentary['created_date'] %></span> 
+  </p>
+  <hr>
+<% end %>
+
+<!-- Форма для ввода текста и отправки его в post обработчик-->
+<form action="/comment/<%= @row['id'] %>" method="post"  role="form">
+  <textarea name="content" class="form-control" rows="8" style="width:500px" placeholder="Type comment here"></textarea>
+  <br>
+  <button type="submit" class="btn btn-info">Add comment</button>
+</form>

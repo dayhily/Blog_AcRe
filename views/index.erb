@@ -1,0 +1,25 @@
+<h2>Latests posts</h2>
+<br>
+
+<!-- Присваивание каждого ключ-значения хэша @results переменной post-->
+<!-- Переменая post получается тоже ввиде хэша -->
+<!-- post={id==>Идентификатор, content==>Текст, created_date==>Дата}-->
+<% @results.each do |post| %>
+
+<p>
+  <!-- Вывод переменой post с ключем content -->
+  <%= post['content'] %>
+  <br>
+
+  <!-- Вывод переменой post с ключем created_date -->
+  Added at: <%= post['created_date'] %>
+  <br>
+  <!-- Вывод ссылки на страницу с комментариями -->
+  <!-- Для каждого поста в ссылку добавляется свой id  -->
+  <a href="/comment/<%= post['id'] %>">Comments</a>
+  <hr>
+  <br>
+</p>
+   
+   
+<% end %>
