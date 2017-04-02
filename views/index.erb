@@ -11,9 +11,13 @@
   <%= post['content'] %>
   <br>
 
+  <!-- Вывод переменой post с ключем author -->
+  <p>Author: <%= post['author'] %> </p>
+  
   <!-- Вывод переменой post с ключем created_date -->
-  Added at: <%= post['created_date'] %>
+  Added at: <%= post['created_at'] %>
   <br>
+
   <!-- Вывод ссылки на страницу с комментариями -->
   <!-- Для каждого поста в ссылку добавляется свой id  -->
   <a href="/comment/<%= post['id'] %>">Comments</a>

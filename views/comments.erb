@@ -1,10 +1,10 @@
 <p>
   <!-- Вывод хэш @row с ключем content (вывод поста) -->
-  <%= @row['content'] %>
+  <%= @result[:content] %>
   <br>
 
   <!-- Вывод хэш @row с ключем created_date (вывод даты)-->
-  Added at: <%= @row['created_date'] %>
+  Added at: <%= @result[:created_at] %>
 </p>
 
 <br>
@@ -14,14 +14,14 @@
   <p>
     <%= commentary['content'] %>
     <br>
-    <span class="small">Added at: <%= commentary['created_date'] %></span> 
+    <span class="small">Added at: <%= commentary[:created_at] %></span> 
   </p>
   <hr>
 <% end %>
 
 <!-- Форма для ввода текста и отправки его в post обработчик-->
-<form action="/comment/<%= @row['id'] %>" method="post"  role="form">
-  <textarea name="content" class="form-control" rows="8" style="width:500px" placeholder="Type comment here"></textarea>
+<form action="/comment/<%= @result[:id] %>" method="post"  role="form">
+  <textarea name="cmt[content]" class="form-control" rows="8" style="width:500px" placeholder="Type comment here"></textarea>
   <br>
   <button type="submit" class="btn btn-info">Add comment</button>
 </form>
