@@ -12,18 +12,32 @@
   <br>
 
   <!-- Вывод переменой post с ключем author -->
-  <p>Author: <%= post['author'] %> </p>
-  
-  <!-- Вывод переменой post с ключем created_date -->
-  Added at: <%= post['created_at'] %>
-  <br>
+  <p>
+    <form action="/" method="post">
+      Author: [ <%= post['author'] %> ]
+      <!-- Вывод переменой post с ключем created_date -->
+      <span style='margin-left: 55px;'> Added at: [ <%= post['created_at'] %> ]</span>
+    </form>
+    <form class="form-inline">
+      <div class="form-group" >
+        <!-- Вывод ссылки на страницу с комментариями -->
+        <!-- Для каждого поста в ссылку добавляется свой id  -->
+        <a href="/comment/<%= post['id'] %>">Comments</a>
+        Post ID=<%= post['id'] %>
 
-  <!-- Вывод ссылки на страницу с комментариями -->
-  <!-- Для каждого поста в ссылку добавляется свой id  -->
-  <a href="/comment/<%= post['id'] %>">Comments</a>
+        <!-- Кнопка с запросом на удаление в delete '/:post_id'-->
+        <form action="/<%= post['id'] %>" method="post">
+          <span style='margin-left: 55px;'>
+            <input type="hidden" name="_method" value="delete" /> 
+            <input type="submit" class="btn btn-danger btn-xs" value="Delete post with comments" />
+          </span>
+        </form>
+      </div>
+    </form>
+  </p>
+
   <hr>
   <br>
 </p>
-   
    
 <% end %>

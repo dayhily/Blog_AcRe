@@ -24,6 +24,10 @@ get '/' do
   erb :index
 end
 
+post '/' do
+  erb :index
+end
+
 get '/new' do #обработчик get запроса /new (формирует страницу)
   erb :new #возвращаем представление new.erb
 end
@@ -42,21 +46,13 @@ post '/new' do #обработчик post запроса /new
   end
 end
 
-delete '/del' do
-  postdel = Post.find(params[:id])
-  postdel.destroy
-  redirect '/'
-end
-
 get '/comment/:post_id' do #обработчик get запроса для url`а (формирует страницы)
   #получаем переменную из url`а
   post_id = params[:post_id]
   
   #получаем список постов - у нас будет только один пост по этому номеру
   @result = Post.find(params[:post_id])
-  
   #выбираем комментарии для нашего поста
-	#@comments = Comment.find_by post_id: post_id
 	@comments = Comment.all.where post_id: post_id
   
   erb :comments
@@ -81,3 +77,18 @@ post '/comment/:post_id' do #обработчик post запроса для url
 		end
 end
 
+get '/:post_id' do #обработчик get запроса от form action="/" в index.erb (формирует страницу)
+  erb :index
+end
+
+delete '/:post_id' do #обработчик post запроса delete
+	#получаем переменную из url`а
+	post_id = params[:post_id]
+
+  #получаем пост и удаяем его
+	Post.find(params[:post_id]).destroy
+	#выбираем все комментарии для нашего поста и удаляем
+	Comment.where(post_id: post_id).destroy_all
+
+	redirect to ('/')
+end

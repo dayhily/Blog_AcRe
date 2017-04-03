@@ -13,9 +13,10 @@
 <% @comments.each do |commentary| %>
   <p>
     <%= commentary['content'] %>
-    <br>
-    <span class="small">Added at: <%= commentary[:created_at] %></span> 
+     <br>
+    <span class="small">Added at: <%= commentary[:created_at] %></span>
   </p>
+  Comment ID= <%= commentary['id'] %>
   <hr>
 <% end %>
 
@@ -24,4 +25,5 @@
   <textarea name="cmt[content]" class="form-control" rows="8" style="width:500px" placeholder="Type comment here"></textarea>
   <br>
   <button type="submit" class="btn btn-info">Add comment</button>
+  
 </form>
