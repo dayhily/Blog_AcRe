@@ -22,7 +22,10 @@
       <div class="form-group" >
         <!-- Вывод ссылки на страницу с комментариями -->
         <!-- Для каждого поста в ссылку добавляется свой id  -->
-        <a href="/comment/<%= post['id'] %>">Comments</a>
+        <a href="/comment/<%= post['id'] %>">Comments
+          <!-- Для каждого поста выводитколичесво комментариев  -->
+          (<%= Comment.where(post_id: post['id']).count %>)
+        </a>
         Post ID=<%= post['id'] %>
 
         <!-- Кнопка с запросом на удаление в delete '/:post_id'-->
