@@ -88,6 +88,5 @@ delete '/:post_id' do #обработчик post запроса delete
 	Post.find(params[:post_id]).destroy
 	#выбираем все комментарии для нашего поста и удаляем
 	Comment.where(post_id: post_id).destroy_all
-
 	redirect to ('/')
 end
