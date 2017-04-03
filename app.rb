@@ -53,8 +53,7 @@ get '/comment/:post_id' do #обработчик get запроса для url`�
   #получаем список постов - у нас будет только один пост по этому номеру
   @result = Post.find(params[:post_id])
   #выбираем комментарии для нашего поста
-	@comments = Comment.all.where post_id: post_id
-  
+	@comments = Comment.all.where(post_id: post_id).order "id DESC"
   erb :comments
 end
 
