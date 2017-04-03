@@ -18,8 +18,6 @@
       <!-- Вывод переменой post с ключем created_date -->
       <span style='margin-left: 55px;'> Added at: [ <%= post['created_at'] %> ]</span>
     </form>
-    <form class="form-inline">
-      <div class="form-group" >
         <!-- Вывод ссылки на страницу с комментариями -->
         <!-- Для каждого поста в ссылку добавляется свой id  -->
         <a href="/comment/<%= post['id'] %>">Comments
@@ -30,13 +28,11 @@
 
         <!-- Кнопка с запросом на удаление в delete '/:post_id'-->
         <form action="/<%= post['id'] %>" method="post">
-          <span style='margin-left: 55px;'>
+          <span>
             <input type="hidden" name="_method" value="delete" /> 
             <input type="submit" class="btn btn-danger btn-xs" value="Delete post with comments" />
           </span>
         </form>
-      </div>
-    </form>
   </p>
 
   <hr>
